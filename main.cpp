@@ -1,37 +1,5 @@
 #include "logging.h"
 
-class A {
-    public:
-        A() {
-            log = LogManager::get_logging() -> get_logger("AClass");
-            log -> debug() << "Hello A: " << 3.14 << '\n';
-            log -> info() << "Hello A: " << 3.14 << '\n';
-            log -> warning() << "Hello A: " << 3.14 << '\n';
-            log -> error() << "Hello A: " << 3.14 << '\n';
-            log -> critical() << "Hello A: " << 3.14 << '\n';
-        }
-
-    private:
-        Logger      *log;
-};
-
-class B {
-    public:
-        B() {
-            log = LogManager::get_logging() -> get_logger("BClass");
-            log -> set_param("SESSION", "b_session");
-
-            log -> debug() << "Hello B: " << 3.14 << '\n';
-            log -> info() << "Hello B: " << 3.14 << '\n';
-            log -> warning() << "Hello B: " << 3.14 << '\n';
-            log -> error() << "Hello B: " << 3.14 << '\n';
-            log -> critical() << "Hello B: " << 3.14 << '\n';
-        }
-
-    private:
-        Logger      *log;
-};
-
 int main(int c, char **v) {
 
     // logging init
@@ -46,9 +14,15 @@ int main(int c, char **v) {
     lg -> add_handler(ch);
     lg -> add_handler(fh);
 
-    // Test
-    A   a;
-    B   b;
+    Logger *log = LogManager::get_logging() -> get_logger("Test");
+
+    for(unsigned long long i = 0; i < 350000; ++i) {
+        log -> debug() << "aaaaaaaaaaaaaaaaaaaaaaaaa" << 234 << "333333333" << 456465 << "\n";
+        log -> info() << "aaaaaaaaaaaaaaaaaaaaaaaaa" << 234 << "333333333" << 456465 << "\n";
+        log -> warning() << "aaaaaaaaaaaaaaaaaaaaaaaaa" << 234 << "333333333" << 456465 << "\n";
+        log -> error() << "aaaaaaaaaaaaaaaaaaaaaaaaa" << 234 << "333333333" << 456465 << "\n";
+        log -> critical() << "aaaaaaaaaaaaaaaaaaaaaaaaa" << 234 << "333333333" << 456465 << "\n";
+    }
 
     return 0;
 }

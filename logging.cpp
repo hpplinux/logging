@@ -301,7 +301,7 @@ LogManager* LogManager::get_logging() {
 }
 
 LogManager::LogManager() {
-    std::ios::sync_with_stdio(false);
+    // std::ios::sync_with_stdio(false);
 }
 
 LogManager::~LogManager() {
